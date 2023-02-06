@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b338ee0-50e1-4c7b-876a-f7d1c367c4f6" name="Changes" comment="Создание проекта">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/merger/control/Management.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/merger/control/MergeSortingArray.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/merger/control/MergeSortingArrayTest.java" afterDir="false" />
+    <list default="true" id="0b338ee0-50e1-4c7b-876a-f7d1c367c4f6" name="Changes" comment="Готов алгоритм сортировки слиянием + тест">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/MergerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/MergerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/control/MergeSortingArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/control/MergeSortingArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/merger/control/MergeSortingArrayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/merger/control/MergeSortingArrayTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="issue-1-create-sorter" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,26 +61,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/ProgramF/Java/file-merger",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Java",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/ProgramF/Java/file-merger&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="JUnit.MergeSortingArrayTest.shouldReturnSortedArray">
+}</component>
+  <component name="RunManager" selected="JUnit.MergeSortingArrayTest.shouldReturnSortedArrayDigits">
     <configuration name="MergerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.merger.MergerApplication" />
       <module name="file-merger" />
@@ -112,10 +110,44 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MergeSortingArrayTest.shouldReturnSortedArrayDigits" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="file-merger" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.merger.control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.merger.control" />
+      <option name="MAIN_CLASS_NAME" value="com.merger.control.MergeSortingArrayTest" />
+      <option name="METHOD_NAME" value="shouldReturnSortedArrayDigits" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MergeSortingArrayTest.shouldReturnSorterArrayStrings" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="file-merger" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.merger.control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.merger.control" />
+      <option name="MAIN_CLASS_NAME" value="com.merger.control.MergeSortingArrayTest" />
+      <option name="METHOD_NAME" value="shouldReturnSorterArrayStrings" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MergeSortingArrayTest.shouldReturnSortedArray" />
+        <item itemvalue="JUnit.MergeSortingArrayTest.shouldReturnSortedArrayDigits" />
+        <item itemvalue="JUnit.MergeSortingArrayTest.shouldReturnSorterArrayStrings" />
         <item itemvalue="Application.MergerApplication" />
+        <item itemvalue="JUnit.MergeSortingArrayTest.shouldReturnSortedArray" />
       </list>
     </recent_temporary>
   </component>
@@ -128,7 +160,9 @@
       <option name="presentableId" value="Default" />
       <updated>1675435116924</updated>
       <workItem from="1675435118147" duration="1491000" />
-      <workItem from="1675495009379" duration="15770000" />
+      <workItem from="1675495009379" duration="16648000" />
+      <workItem from="1675679436471" duration="1162000" />
+      <workItem from="1675688139483" duration="6599000" />
     </task>
     <task id="LOCAL-00001" summary="Создание проекта">
       <created>1675435385668</created>
@@ -137,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675435385668</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Готов алгоритм сортировки слиянием + тест">
+      <created>1675609283128</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1675609283128</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +186,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Создание проекта" />
-    <option name="LAST_COMMIT_MESSAGE" value="Создание проекта" />
+    <MESSAGE value="Готов алгоритм сортировки слиянием + тест" />
+    <option name="LAST_COMMIT_MESSAGE" value="Готов алгоритм сортировки слиянием + тест" />
   </component>
 </project>
