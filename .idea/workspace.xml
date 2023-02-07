@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b338ee0-50e1-4c7b-876a-f7d1c367c4f6" name="Changes" comment="Готов алгоритм сортировки слиянием + тест">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/merger/control/FileHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="0b338ee0-50e1-4c7b-876a-f7d1c367c4f6" name="Changes" comment="Реализован алгоритм сортировки слиянием строк + тест">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/merger/control/FileHandlerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/MergerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/MergerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/control/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/control/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/control/Management.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/control/Management.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,13 +20,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="issue-10-create-merge-sort-string" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,7 +69,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/ProgramF/Java/file-merger",
+    "last_opened_file_path": "D:/ProgramF/Java/corporation-master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -145,8 +147,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MergerApplication" />
-        <item itemvalue="JUnit.MergeSortingArrayTest.shouldReturnSortedArrayDigits" />
         <item itemvalue="JUnit.MergeSortingArrayTest.shouldReturnSorterArrayStrings" />
+        <item itemvalue="JUnit.MergeSortingArrayTest.shouldReturnSortedArrayDigits" />
         <item itemvalue="JUnit.MergeSortingArrayTest.shouldReturnSortedArray" />
       </list>
     </recent_temporary>
@@ -190,25 +192,5 @@
     <MESSAGE value="Создание проекта" />
     <MESSAGE value="Готов алгоритм сортировки слиянием + тест" />
     <option name="LAST_COMMIT_MESSAGE" value="Готов алгоритм сортировки слиянием + тест" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/merger/control/FileHandler.java</url>
-          <line>44</line>
-          <properties class="com.merger.control.FileHandler" method="mergeArrays">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/merger/control/FileHandler.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

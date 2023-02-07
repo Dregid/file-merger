@@ -9,42 +9,76 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class FileHandler {
+    private final String ERROR = "Произошла ошибка при попытки чтении из %s.";
+    private final String ILLEGAL_ARG = "Файл %s содержит недопустимые символы. Ожидаются только %s. \n";
+    private final String IGNORED = "Строка под номером %d, содержит %s. Недопустимый формат. \n";
+
     public int[] toArrayDigits(String[] fileNames) {
-        int[][] arraysDigits = new int[fileNames.length][0];
         int fileCount = 0;
         int totalDigits = 0;
+        int[][] arraysDigits = new int[fileNames.length][0];
 
         for (String fileName : fileNames) {
-            try (FileInputStream fis = new FileInputStream("C://" + fileName);
+            try (FileInputStream fis = new FileInputStream("C://TestMergeSort/" + fileName);
             BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
                 arraysDigits[fileCount] = new int[getLinesCount(fileName)];
 
                 for (int idx = 0; idx < arraysDigits[fileCount].length; idx++) {
+                    String line = reader.readLine();
                     try {
-                        String line = reader.readLine();
-                        arraysDigits[fileCount][idx] = checkForNumAndParse(line);
+                        arraysDigits[fileCount][idx] = checkForMissCharAndParse(line);
                         totalDigits++;
                     } catch (IllegalArgumentException e) {
+                        System.out.printf(ILLEGAL_ARG, fileName, "целые числа");
+                        System.out.printf(IGNORED, idx, line);
                         idx--;
-                        System.out.println("Файл " + fileName + " содержит другие символы кроме чисел. Ожидаются только целые числа.");
                     }
                 }
             } catch (IOException e) {
-                e.printStackTrace();
-                System.out.println("Произошла ошибка при попытки чтении из " + fileName + ".");
+                System.out.printf(ERROR, fileName);
             }
             fileCount++;
         }
-        return mergeArrays(arraysDigits, totalDigits);
+        return mergeArraysDigits(arraysDigits, totalDigits);
     }
 
-    private int[] mergeArrays(int[][] arrays, int totalDigits) {
+    public String[] toArrayStrings(String[] fileNames) {
+        int fileCount = 0;
+        int totalWords = 0;
+        String[][] arrayWords = new String[fileNames.length][0];
+
+        for (String fileName : fileNames) {
+            try (FileInputStream fis = new FileInputStream("C://TestMergeSort/" + fileName);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
+                arrayWords[fileCount] = new String[getLinesCount(fileName)];
+
+                for (int idx = 0; idx < arrayWords[fileCount].length; idx++) {
+                    String line = reader.readLine();
+
+                    try {
+                        arrayWords[fileCount][idx] = checkForMissSpace(line);
+                        totalWords++;
+                    } catch (IllegalArgumentException e) {
+                        System.out.printf(ILLEGAL_ARG, fileName, "символы без пробелов");
+                        System.out.printf(IGNORED, idx, line);
+                        idx--;
+                    }
+                }
+            } catch (IOException e) {
+                System.out.printf(ERROR, fileName);
+            }
+            fileCount++;
+        }
+        return mergeArraysStrings(arrayWords, totalWords);
+    }
+
+    private int[] mergeArraysDigits(int[][] arrays, int totalDigits) {
         int[] arrayDigits = new int[totalDigits];
         int idx = 0;
 
         for (int[] array : arrays) {
             for (int digit : array) {
-                if (!(idx > array.length / 1.5 && digit == 0)) {
+                if (!(idx > (array.length / 1.5) && digit == 0)) {
                     arrayDigits[idx++] = digit;
                 }
             }
@@ -52,10 +86,24 @@ public class FileHandler {
         return arrayDigits;
     }
 
-    private int checkForNumAndParse(String line) {
+    private String[] mergeArraysStrings(String[][] arrays, int totalWords) {
+        String[] arrayWords = new String[totalWords];
+        int idx = 0;
+
+        for (String[] array : arrays) {
+            for (String word : array) {
+                arrayWords[idx++] = word;
+            }
+        }
+        return arrayWords;
+    }
+
+    private int checkForMissCharAndParse(String line) {
         try {
-            if (!line.matches("[\\d]+")) {
-                throw new IllegalArgumentException();
+            for (char ch : line.toCharArray()) {
+                if (ch < 48 || ch > 57) {
+                    throw new IllegalArgumentException();
+                }
             }
         } catch (NullPointerException e) {
             return 0;
@@ -63,8 +111,21 @@ public class FileHandler {
         return Integer.parseInt(line);
     }
 
+    private String checkForMissSpace(String line) {
+        try {
+            for (char ch : line.toCharArray()) {
+                if (ch == ' ') {
+                    throw new IllegalArgumentException();
+                }
+            }
+        } catch (NullPointerException e) {
+            return "□";
+        }
+        return line;
+    }
+
     private int getLinesCount(String fileName) throws IOException {
-        Path path = Paths.get("C://" + fileName);
+        Path path = Paths.get("C://TestMergeSort/" + fileName);
         return (int) Files.lines(path).count();
     }
 }
