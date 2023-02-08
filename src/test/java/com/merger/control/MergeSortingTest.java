@@ -7,9 +7,9 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class MergeSortingArrayTest {
+class MergeSortingTest {
     @Mock
-    private MergeSortingArray mergeSorter;
+    private MergeSorting mergeSorter;
 
     @Test
     public void shouldReturnSortedArrayDigits() {
