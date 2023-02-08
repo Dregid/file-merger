@@ -8,5 +8,6 @@ public class MergerApplication {
         CommandHandler handler = new CommandHandler(args);
         Management management = new Management(handler);
         management.start();
+        System.out.println("Сортировка слиянием завершена.");
     }
 }

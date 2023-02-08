@@ -40,21 +40,6 @@ public class ArrayHandler {
         return result;
     }
 
-    public static int[] clearDescArrayFromErrors(int[] array) {
-        int errorAmount = 0;
-        for (int number : array) {
-            if (999999999 == number) {
-                errorAmount++;
-            } else {
-                break;
-            }
-        }
-        int[] result = new int[array.length - errorAmount];
-        System.arraycopy(array, errorAmount, result, 0, result.length);
-
-        return result;
-    }
-
     public static String[] clearAscArrayFromErrors(String[] array) {
         int errorAmount = 0;
         for (int idx = array.length - 1; idx > 0; idx--) {
@@ -66,6 +51,21 @@ public class ArrayHandler {
         }
         String[] result = new String[array.length - errorAmount];
         System.arraycopy(array, 0, result, 0, result.length);
+
+        return result;
+    }
+
+    public static int[] clearDescArrayFromErrors(int[] array) {
+        int errorAmount = 0;
+        for (int number : array) {
+            if (999999999 == number) {
+                errorAmount++;
+            } else {
+                break;
+            }
+        }
+        int[] result = new int[array.length - errorAmount];
+        System.arraycopy(array, errorAmount, result, 0, result.length);
 
         return result;
     }
