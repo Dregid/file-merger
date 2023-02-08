@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b338ee0-50e1-4c7b-876a-f7d1c367c4f6" name="Changes" comment="Класс для хранения команд добавлены.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/merger/exception/fileAlreadyExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/merger/handler/CommandHandler.java" afterDir="false" />
+    <list default="true" id="0b338ee0-50e1-4c7b-876a-f7d1c367c4f6" name="Changes" comment="Реализован обработчик файлов">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/merger/exception/CommandIsNotEnteredException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/merger/handler/ArrayHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/MergerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/MergerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/control/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/handler/FileHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/control/Management.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/control/Management.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/control/MergeSortingArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/control/MergeSorting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/merger/control/FileHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/merger/control/FileHandlerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/merger/control/MergeSortingArrayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/merger/control/MergeSortingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/control/MergeSorting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/MergeSorting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/exception/fileAlreadyExistsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/handler/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/handler/CommandHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/handler/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/handler/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/merger/control/MergeSortingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/merger/control/MergeSortingTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="issue-5-create-enum-command" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -88,18 +88,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.merger.control" />
       <recent name="com.merger" />
+      <recent name="com.merger.control" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MergerApplication">
+  <component name="RunManager" selected="JUnit.MergeSortingTest.shouldReturnSorterArrayStrings">
     <configuration name="MergerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.merger.MergerApplication" />
       <module name="file-merger" />
-      <option name="PROGRAM_PARAMETERS" value="-a -i test.txt in1.txt in2.txt" />
+      <option name="PROGRAM_PARAMETERS" value="-s -d test.txt in1.txt in2.txt in3.txt in4.txt" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.merger.control.*" />
+          <option name="PATTERN" value="com.merger.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -173,11 +173,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MergeSortingTest.shouldReturnSorterArrayStrings" />
         <item itemvalue="Application.MergerApplication" />
+        <item itemvalue="JUnit.MergeSortingTest.shouldReturnSortedArrayDigits" />
         <item itemvalue="JUnit.FileHandlerTest.shouldReturnArraysStrings" />
         <item itemvalue="JUnit.FileHandlerTest.shouldReturnArrayDigitsFromFile" />
-        <item itemvalue="JUnit.MergeSortingTest.shouldReturnSorterArrayStrings" />
-        <item itemvalue="JUnit.MergeSortingTest.shouldReturnSortedArrayDigits" />
       </list>
     </recent_temporary>
   </component>
@@ -195,6 +195,7 @@
       <workItem from="1675688139483" duration="6599000" />
       <workItem from="1675737957203" duration="895000" />
       <workItem from="1675738887295" duration="14589000" />
+      <workItem from="1675862731507" duration="8590000" />
     </task>
     <task id="LOCAL-00001" summary="Создание проекта">
       <created>1675435385668</created>
@@ -230,6 +231,17 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Создание проекта" />
     <MESSAGE value="Готов алгоритм сортировки слиянием + тест" />
@@ -240,14 +252,10 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/merger/handler/FileHandler.java</url>
-          <line>19</line>
-          <properties class="com.merger.handler.FileHandler" method="writeToFileDigits">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="7" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/merger/MergeSorting.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

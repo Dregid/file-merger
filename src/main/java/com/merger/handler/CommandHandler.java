@@ -1,7 +1,7 @@
 package com.merger.handler;
 
 import com.merger.control.Command;
-import com.merger.exception.fileAlreadyExistsException;
+import com.merger.exception.CommandIsNotEnteredException;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,7 +14,7 @@ public class CommandHandler {
     private String[] fileNames;
     private int currentIdx = 0;
 
-    private String[] incomingCommand;
+    private final String[] incomingCommand;
 
     public CommandHandler(String[] args) {
         this.incomingCommand = args;
@@ -43,18 +43,20 @@ public class CommandHandler {
         if ("-i".equals(incomingCommand[currentIdx])) {
             typeData = Command.INTEGER;
             currentIdx++;
-            return;
         } else if ("-s".equals(incomingCommand[currentIdx])) {
             typeData = Command.STRING;
             currentIdx++;
-            return;
+        } else {
+            System.out.println("Отсутствует команда для типа данных");
+            throw new CommandIsNotEnteredException();
         }
-
-        throw new IllegalArgumentException();
+        if ("-a".equals(incomingCommand[1]) || "-d".equals(incomingCommand[1])) {
+            currentIdx++;
+        }
     }
 
     private void checkResultFileName() {
-        Path directory = Path.of("C://TestMergeSort");
+        Path directory = Path.of("C://MergeSort/Result");
         if (!Files.exists(directory)) {
             try {
                 Files.createDirectory(directory);
@@ -64,12 +66,11 @@ public class CommandHandler {
         }
 
         resultFileName = incomingCommand[currentIdx];
-        Path resultPath = Path.of("C://TestMergeSort/" + resultFileName);
-        if (Files.exists(resultPath)) {
-            throw new fileAlreadyExistsException();
-        }
-
+        Path resultPath = Path.of("C://MergeSort/Result/" + resultFileName);
         try {
+            if (Files.exists(resultPath)) {
+                Files.delete(resultPath);
+            }
             Files.createFile(resultPath);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -83,6 +84,10 @@ public class CommandHandler {
             fileNames[idx] = incomingCommand[currentIdx++];
         }
         this.fileNames = fileNames;
+    }
+
+    public Command getSorting() {
+        return sorting;
     }
 
     public Command getTypeData() {

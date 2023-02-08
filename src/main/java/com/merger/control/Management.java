@@ -1,5 +1,7 @@
 package com.merger.control;
 
+import com.merger.MergeSorting;
+import com.merger.handler.ArrayHandler;
 import com.merger.handler.CommandHandler;
 import com.merger.handler.FileHandler;
 
@@ -14,37 +16,36 @@ public class Management {
 
     public void start() {
         commandHandler.init();
-
         if (Command.INTEGER == commandHandler.getTypeData()) {
             workWithDigits();
-        } else {
+        } else if (Command.STRING == commandHandler.getTypeData()) {
             workWithStrings();
         }
     }
 
     private void workWithDigits() {
         int[] arrayDigits = fileHandler.readToArrayDigits(commandHandler.getFileNames());
-        if (0 == arrayDigits[arrayDigits.length - 1]) {
-            arrayDigits = clearArrayFromErrors(arrayDigits);
+        arrayDigits = mergeSort.mergeSortDigits(arrayDigits, 0,
+                arrayDigits.length - 1, commandHandler.getSorting());
+
+        if (999999999 == arrayDigits[arrayDigits.length - 1]) {
+            arrayDigits = ArrayHandler.clearAscArrayFromErrors(arrayDigits);
+        } else if (999999999 == arrayDigits[0]) {
+            arrayDigits = ArrayHandler.clearDescArrayFromErrors(arrayDigits);
         }
-        arrayDigits = mergeSort.mergeSortDigits(arrayDigits, 0, arrayDigits.length - 1);
         fileHandler.writeToFileDigits(arrayDigits, commandHandler.getResultFileName());
     }
 
     private void workWithStrings() {
         String[] arrayStrings = fileHandler.readToArrayStrings(commandHandler.getFileNames());
-    }
+        arrayStrings = mergeSort.mergeSortStrings(arrayStrings, 0,
+                arrayStrings.length - 1, commandHandler.getSorting());
 
-    private int[] clearArrayFromErrors(int[] array) {
-        int count = 0;
-        for (int idx = array.length - 1; idx > 0; idx--) {
-            if (0 == array[idx]) {
-                count++;
-            }
+        if ("⌂".equals(arrayStrings[arrayStrings.length - 1])) {
+            arrayStrings = ArrayHandler.clearAscArrayFromErrors(arrayStrings);
+        } else if ("⌂".equals(arrayStrings[0])) {
+            arrayStrings = ArrayHandler.clearDescArrayFromErrors(arrayStrings);
         }
-        int [] result = new int[array.length - count];
-        System.arraycopy(array, 0, result, 0, result.length);
-
-        return result;
+        fileHandler.writeToFileStrings(arrayStrings, commandHandler.getResultFileName());
     }
 }

@@ -12,16 +12,28 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class FileHandler {
-    private final String ERROR = "Произошла ошибка при попытки чтении из %s. \n";
+    private final String ERROR = "Произошла ошибка при попытки чтении из %s. Возможно файла не существует. \n";
     private final String ILLEGAL_ARG = "Файл %s содержит недопустимые символы. Ожидаются только %s. \n";
     private final String IGNORED = "Найдена строка - %s. Недопустимый формат. \n";
 
     public void writeToFileDigits(int[] array, String fileName) {
-        try (FileOutputStream fos = new FileOutputStream("C://TestMergeSort/" + fileName);
+        try (FileOutputStream fos = new FileOutputStream("C://MergeSort/Result/" + fileName);
              BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos))) {
-            for (int i : array) {
-                String parse = String.valueOf(i);
+            for (int number : array) {
+                String parse = String.valueOf(number);
                 writer.write(parse);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void writeToFileStrings(String[] array, String fileName) {
+        try (FileOutputStream fos = new FileOutputStream("C://MergeSort/Result/" + fileName);
+             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos))) {
+            for (String word : array) {
+                writer.write(word);
                 writer.newLine();
             }
         } catch (IOException e) {
@@ -35,7 +47,7 @@ public class FileHandler {
         int[][] arraysDigits = new int[fileNames.length][0];
 
         for (String fileName : fileNames) {
-            try (FileInputStream fis = new FileInputStream("C://TestMergeSort/" + fileName);
+            try (FileInputStream fis = new FileInputStream("C://MergeSort/" + fileName);
             BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
                 arraysDigits[fileCount] = new int[getLinesCount(fileName)];
 
@@ -55,7 +67,7 @@ public class FileHandler {
             }
             fileCount++;
         }
-        return mergeArraysDigits(arraysDigits, totalDigits);
+        return ArrayHandler.mergeArraysDigits(arraysDigits, totalDigits);
     }
 
     public String[] readToArrayStrings(String[] fileNames) {
@@ -64,7 +76,7 @@ public class FileHandler {
         String[][] arrayWords = new String[fileNames.length][0];
 
         for (String fileName : fileNames) {
-            try (FileInputStream fis = new FileInputStream("C://TestMergeSort/" + fileName);
+            try (FileInputStream fis = new FileInputStream("C://MergeSort/" + fileName);
             BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
                 arrayWords[fileCount] = new String[getLinesCount(fileName)];
 
@@ -85,33 +97,7 @@ public class FileHandler {
             }
             fileCount++;
         }
-        return mergeArraysStrings(arrayWords, totalWords);
-    }
-
-    private int[] mergeArraysDigits(int[][] arrays, int totalDigits) {
-        int[] arrayDigits = new int[totalDigits];
-        int idx = 0;
-
-        for (int[] array : arrays) {
-            for (int digit : array) {
-                if (!(idx > (array.length / 1.5) && digit == 0)) {
-                    arrayDigits[idx++] = digit;
-                }
-            }
-        }
-        return arrayDigits;
-    }
-
-    private String[] mergeArraysStrings(String[][] arrays, int totalWords) {
-        String[] arrayWords = new String[totalWords];
-        int idx = 0;
-
-        for (String[] array : arrays) {
-            for (String word : array) {
-                arrayWords[idx++] = word;
-            }
-        }
-        return arrayWords;
+        return ArrayHandler.mergeArraysStrings(arrayWords, totalWords);
     }
 
     private int checkForMissCharAndParse(String line) {
@@ -122,7 +108,7 @@ public class FileHandler {
                 }
             }
         } catch (NullPointerException e) {
-            return 0;
+            return 999999999;
         }
         return Integer.parseInt(line);
     }
@@ -135,13 +121,13 @@ public class FileHandler {
                 }
             }
         } catch (NullPointerException e) {
-            return "□";
+            return "⌂";
         }
         return line;
     }
 
     private int getLinesCount(String fileName) throws IOException {
-        Path path = Paths.get("C://TestMergeSort/" + fileName);
+        Path path = Paths.get("C://MergeSort/" + fileName);
         return (int) Files.lines(path).count();
     }
 }

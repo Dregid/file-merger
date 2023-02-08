@@ -1,4 +1,5 @@
 package com.merger.control;
+import com.merger.MergeSorting;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,9 +17,9 @@ class MergeSortingTest {
         int[] actual = {3, 5, 2, 16, 18, 10, 15, 25};
         int[] expected = {2, 3, 5, 10, 15, 16, 18, 25};
 
-        Mockito.when(mergeSorter.mergeSortDigits(actual, 0, actual.length - 1))
+        Mockito.when(mergeSorter.mergeSortDigits(actual, 0, actual.length - 1, Command.ASCENDING))
                 .thenReturn(expected);
-        actual = mergeSorter.mergeSortDigits(actual, 0, actual.length - 1);
+        actual = mergeSorter.mergeSortDigits(actual, 0, actual.length - 1, Command.ASCENDING);
 
         Assertions.assertArrayEquals(actual, expected);
     }
@@ -28,9 +29,9 @@ class MergeSortingTest {
         String[] actual = {"I", "Love", "Java", "&", "Spring", "!"};
         String[] expected = {"!", "&", "I", "Java", "Love", "Spring"};
 
-        Mockito.when(mergeSorter.mergeSortStrings(actual, 0, actual.length - 1))
+        Mockito.when(mergeSorter.mergeSortStrings(actual, 0, actual.length - 1, Command.ASCENDING))
                 .thenReturn(expected);
-        actual = mergeSorter.mergeSortStrings(actual, 0, actual.length - 1);
+        actual = mergeSorter.mergeSortStrings(actual, 0, actual.length - 1, Command.ASCENDING);
 
         Assertions.assertArrayEquals(actual, expected);
     }
