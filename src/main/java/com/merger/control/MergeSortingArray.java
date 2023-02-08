@@ -1,47 +1,41 @@
 package com.merger.control;
 
 public class MergeSortingArray {
-    public void mergeSortDigits(int[] source, int size) {
-        if (size < 2) {
-            return;
+    public int[] mergeSortDigits(int[] source, int minSize, int maxSize) {
+        if (minSize == maxSize) {
+            return new int[]{source[minSize]};
         }
-        int mid = size / 2;
-        int[] lHalf = new int[mid];
-        int[] rHalf = new int[size - mid];
+        int mid = minSize + (maxSize - minSize) / 2;
+        int[] lHalf = mergeSortDigits(source, minSize, mid);
+        int[] rHalf = mergeSortDigits(source, mid + 1, maxSize);
 
-        for (int idx = 0; idx < mid; idx++) {
-            lHalf[idx] = source[idx];
-        }
-        for (int idx = mid; idx < size; idx++) {
-            rHalf[idx - mid] = source[idx];
-        }
-        mergeSortDigits(lHalf, mid);
-        mergeSortDigits(rHalf, size - mid);
-
-        mergeDigits(source, lHalf, rHalf,
-                mid, size - mid);
+        return mergeDigits(lHalf, rHalf);
     }
 
-    private void mergeDigits(int[] source, int[] leftHalf, int[] rightHalf,
-                             int lSize, int rSize) {
+    private int[] mergeDigits(int[] lHalf, int[] rHalf) {
+        int lSize = lHalf.length;
+        int rSize = rHalf.length;
+        int[] result = new int[lSize + rSize];
+
         int i = 0;
         int j = 0;
         int k = 0;
 
-        while (i < lSize && j < rSize) {
-            if (leftHalf[i] <= rightHalf[j]) {
-                source[k++] = leftHalf[i++];
+        while (j < lSize && k < rSize) {
+            if (lHalf[j] <= rHalf[k]) {
+                result[i++] = lHalf[j++];
             } else {
-                source[k++] = rightHalf[j++];
+                result[i++] = rHalf[k++];
             }
         }
 
-        while (i < lSize) {
-            source[k++] = leftHalf[i++];
+        while (j < lSize) {
+            result[i++] = lHalf[j++];
         }
-        while (j < rSize) {
-            source[k++] = rightHalf[j++];
+        while (k < rSize) {
+            result[i++] = rHalf[k++];
         }
+        return result;
     }
 
     public String[] mergeSortStrings(String[] source, int minSize, int maxSize) {

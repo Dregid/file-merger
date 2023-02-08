@@ -9,7 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class FileHandler {
-    private final String ERROR = "Произошла ошибка при попытки чтении из %s.";
+    private final String ERROR = "Произошла ошибка при попытки чтении из %s. \n";
     private final String ILLEGAL_ARG = "Файл %s содержит недопустимые символы. Ожидаются только %s. \n";
     private final String IGNORED = "Строка под номером %d, содержит %s. Недопустимый формат. \n";
 
