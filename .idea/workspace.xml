@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="0b338ee0-50e1-4c7b-876a-f7d1c367c4f6" name="Changes" comment="Готов алгоритм сортировки слиянием + тест">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/MergerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/MergerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/control/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/control/FileHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/control/MergeSortingArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/control/MergeSortingArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/merger/control/FileHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/merger/control/FileHandlerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/merger/control/MergeSortingArrayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/merger/control/MergeSortingArrayTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,14 +76,14 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.MergeSortingArrayTest.shouldReturnSortedArrayDigits">
+  <component name="RunManager" selected="JUnit.FileHandlerTest.shouldReturnArraysStrings">
     <configuration name="MergerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.merger.MergerApplication" />
       <module name="file-merger" />
@@ -94,7 +97,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MergeSortingArrayTest.shouldReturnSortedArray" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FileHandlerTest.shouldReturnArrayDigitsFromFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="file-merger" />
       <extension name="coverage">
         <pattern>
@@ -103,8 +106,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.merger.control" />
-      <option name="MAIN_CLASS_NAME" value="com.merger.control.MergeSortingArrayTest" />
-      <option name="METHOD_NAME" value="shouldReturnSortedArray" />
+      <option name="MAIN_CLASS_NAME" value="com.merger.control.FileHandlerTest" />
+      <option name="METHOD_NAME" value="shouldReturnArrayDigitsFromFile" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileHandlerTest.shouldReturnArraysStrings" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="file-merger" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.merger.control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.merger.control" />
+      <option name="MAIN_CLASS_NAME" value="com.merger.control.FileHandlerTest" />
+      <option name="METHOD_NAME" value="shouldReturnArraysStrings" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -144,10 +163,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MergeSortingArrayTest.shouldReturnSortedArrayDigits" />
-        <item itemvalue="JUnit.MergeSortingArrayTest.shouldReturnSorterArrayStrings" />
+        <item itemvalue="JUnit.FileHandlerTest.shouldReturnArraysStrings" />
+        <item itemvalue="JUnit.FileHandlerTest.shouldReturnArrayDigitsFromFile" />
         <item itemvalue="Application.MergerApplication" />
-        <item itemvalue="JUnit.MergeSortingArrayTest.shouldReturnSortedArray" />
+        <item itemvalue="JUnit.MergeSortingArrayTest.shouldReturnSorterArrayStrings" />
+        <item itemvalue="JUnit.MergeSortingArrayTest.shouldReturnSortedArrayDigits" />
       </list>
     </recent_temporary>
   </component>
@@ -163,6 +183,8 @@
       <workItem from="1675495009379" duration="16648000" />
       <workItem from="1675679436471" duration="1162000" />
       <workItem from="1675688139483" duration="6599000" />
+      <workItem from="1675737957203" duration="895000" />
+      <workItem from="1675738887295" duration="14589000" />
     </task>
     <task id="LOCAL-00001" summary="Создание проекта">
       <created>1675435385668</created>

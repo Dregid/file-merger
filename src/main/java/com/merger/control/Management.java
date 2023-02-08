@@ -6,6 +6,4 @@ public class Management {
     public Management() {
         mergeSort = new MergeSortingArray();
     }
-
-
 }
