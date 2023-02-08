@@ -1,9 +1,12 @@
-package com.merger.control;
+package com.merger.handler;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,9 +14,22 @@ import java.nio.file.Paths;
 public class FileHandler {
     private final String ERROR = "Произошла ошибка при попытки чтении из %s. \n";
     private final String ILLEGAL_ARG = "Файл %s содержит недопустимые символы. Ожидаются только %s. \n";
-    private final String IGNORED = "Строка под номером %d, содержит %s. Недопустимый формат. \n";
+    private final String IGNORED = "Найдена строка - %s. Недопустимый формат. \n";
 
-    public int[] toArrayDigits(String[] fileNames) {
+    public void writeToFileDigits(int[] array, String fileName) {
+        try (FileOutputStream fos = new FileOutputStream("C://TestMergeSort/" + fileName);
+             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos))) {
+            for (int i : array) {
+                String parse = String.valueOf(i);
+                writer.write(parse);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int[] readToArrayDigits(String[] fileNames) {
         int fileCount = 0;
         int totalDigits = 0;
         int[][] arraysDigits = new int[fileNames.length][0];
@@ -30,7 +46,7 @@ public class FileHandler {
                         totalDigits++;
                     } catch (IllegalArgumentException e) {
                         System.out.printf(ILLEGAL_ARG, fileName, "целые числа");
-                        System.out.printf(IGNORED, idx, line);
+                        System.out.printf(IGNORED, line);
                         idx--;
                     }
                 }
@@ -42,7 +58,7 @@ public class FileHandler {
         return mergeArraysDigits(arraysDigits, totalDigits);
     }
 
-    public String[] toArrayStrings(String[] fileNames) {
+    public String[] readToArrayStrings(String[] fileNames) {
         int fileCount = 0;
         int totalWords = 0;
         String[][] arrayWords = new String[fileNames.length][0];
@@ -60,7 +76,7 @@ public class FileHandler {
                         totalWords++;
                     } catch (IllegalArgumentException e) {
                         System.out.printf(ILLEGAL_ARG, fileName, "символы без пробелов");
-                        System.out.printf(IGNORED, idx, line);
+                        System.out.printf(IGNORED, line);
                         idx--;
                     }
                 }

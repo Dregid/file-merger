@@ -1,6 +1,6 @@
 package com.merger.control;
 
-public class MergeSortingArray {
+public class MergeSorting {
     public int[] mergeSortDigits(int[] source, int minSize, int maxSize) {
         if (minSize == maxSize) {
             return new int[]{source[minSize]};
