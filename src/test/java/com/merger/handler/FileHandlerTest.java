@@ -1,6 +1,5 @@
-package com.merger.control;
+package com.merger.handler;
 
-import com.merger.handler.FileHandler;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,9 +17,9 @@ public class FileHandlerTest {
         String[] files = {"in1.txt", "in2.txt", "in3.txt"};
         int[] desiredArray = new int[]{2,6,12,13,9,15,33,35,8,11,21,23};
 
-        Mockito.when(fileHandler.readToArrayDigits(files))
+        Mockito.when(fileHandler.readToArrayNumbers(files))
                 .thenReturn(desiredArray);
-        int[] result = fileHandler.readToArrayDigits(files);
+        int[] result = fileHandler.readToArrayNumbers(files);
 
         Assertions.assertArrayEquals(result, desiredArray);
     }

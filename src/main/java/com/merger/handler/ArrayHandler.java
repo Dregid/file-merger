@@ -1,28 +1,28 @@
 package com.merger.handler;
 
 public class ArrayHandler {
-    public static int[] mergeArraysDigits(int[][] arrays, int totalDigits) {
-        int[] arrayDigits = new int[totalDigits];
+    public static int[] mergeArraysNumbers(int[][] arrays, int totalNumbers) {
+        int[] arrayNumbers = new int[totalNumbers];
         int idx = 0;
 
         for (int[] array : arrays) {
-            for (int digit : array) {
-                arrayDigits[idx++] = digit;
+            for (int number : array) {
+                arrayNumbers[idx++] = number;
             }
         }
-        return arrayDigits;
+        return arrayNumbers;
     }
 
-    public static String[] mergeArraysStrings(String[][] arrays, int totalWords) {
-        String[] arrayWords = new String[totalWords];
+    public static String[] mergeArraysStrings(String[][] arrays, int totalStrings) {
+        String[] arrayStrings = new String[totalStrings];
         int idx = 0;
 
         for (String[] array : arrays) {
-            for (String word : array) {
-                arrayWords[idx++] = word;
+            for (String str : array) {
+                arrayStrings[idx++] = str;
             }
         }
-        return arrayWords;
+        return arrayStrings;
     }
 
     public static int[] clearAscArrayFromErrors(int[] array) {

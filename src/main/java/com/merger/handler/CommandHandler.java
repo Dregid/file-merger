@@ -14,7 +14,7 @@ public class CommandHandler {
     private String[] fileNames;
     private int currentIdx = 0;
 
-    private final String[] incomingCommand;
+    private String[] incomingCommand;
 
     public CommandHandler(String[] args) {
         this.incomingCommand = args;
@@ -105,5 +105,9 @@ public class CommandHandler {
 
     public String[] getFileNames() {
         return fileNames;
+    }
+
+    public void setIncomingCommand(String[] incomingCommand) {
+        this.incomingCommand = incomingCommand;
     }
 }

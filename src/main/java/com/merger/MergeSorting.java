@@ -3,18 +3,18 @@ package com.merger;
 import com.merger.control.Command;
 
 public class MergeSorting {
-    public int[] mergeSortDigits(int[] source, int minSize, int maxSize, Command command) {
+    public int[] mergeSortNumbers(int[] source, int minSize, int maxSize, Command command) {
         if (minSize == maxSize) {
             return new int[]{source[minSize]};
         }
         int mid = minSize + (maxSize - minSize) / 2;
-        int[] lHalf = mergeSortDigits(source, minSize, mid, command);
-        int[] rHalf = mergeSortDigits(source, mid + 1, maxSize, command);
+        int[] lHalf = mergeSortNumbers(source, minSize, mid, command);
+        int[] rHalf = mergeSortNumbers(source, mid + 1, maxSize, command);
 
-        return mergeDigits(lHalf, rHalf, command);
+        return mergeNumbers(lHalf, rHalf, command);
     }
 
-    private int[] mergeDigits(int[] lHalf, int[] rHalf, Command command) {
+    private int[] mergeNumbers(int[] lHalf, int[] rHalf, Command command) {
         int lSize = lHalf.length;
         int rSize = rHalf.length;
         int[] result = new int[lSize + rSize];

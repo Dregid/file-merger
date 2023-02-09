@@ -17,26 +17,26 @@ public class Management {
     public void start() {
         commandHandler.init();
         if (Command.INTEGER == commandHandler.getTypeData()) {
-            workWithDigits();
+            workWithNumbers();
         } else if (Command.STRING == commandHandler.getTypeData()) {
             workWithStrings();
         }
     }
 
-    private void workWithDigits() {
-        int[] arrayDigits = fileHandler.readToArrayDigits(commandHandler.getFileNames());
-        arrayDigits = mergeSort.mergeSortDigits(arrayDigits, 0,
-                arrayDigits.length - 1, commandHandler.getSorting());
+    public void workWithNumbers() {
+        int[] arrayNumbers = fileHandler.readToArrayNumbers(commandHandler.getFileNames());
+        arrayNumbers = mergeSort.mergeSortNumbers(arrayNumbers, 0,
+                arrayNumbers.length - 1, commandHandler.getSorting());
 
-        if (999999999 == arrayDigits[arrayDigits.length - 1]) {
-            arrayDigits = ArrayHandler.clearAscArrayFromErrors(arrayDigits);
-        } else if (999999999 == arrayDigits[0]) {
-            arrayDigits = ArrayHandler.clearDescArrayFromErrors(arrayDigits);
+        if (999999999 == arrayNumbers[arrayNumbers.length - 1]) {
+            arrayNumbers = ArrayHandler.clearAscArrayFromErrors(arrayNumbers);
+        } else if (999999999 == arrayNumbers[0]) {
+            arrayNumbers = ArrayHandler.clearDescArrayFromErrors(arrayNumbers);
         }
-        fileHandler.writeToFileDigits(arrayDigits, commandHandler.getResultFileName());
+        fileHandler.writeToFileNumbers(arrayNumbers, commandHandler.getResultFileName());
     }
 
-    private void workWithStrings() {
+    public void workWithStrings() {
         String[] arrayStrings = fileHandler.readToArrayStrings(commandHandler.getFileNames());
         arrayStrings = mergeSort.mergeSortStrings(arrayStrings, 0,
                 arrayStrings.length - 1, commandHandler.getSorting());

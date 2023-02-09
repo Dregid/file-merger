@@ -1,5 +1,5 @@
-package com.merger.control;
-import com.merger.MergeSorting;
+package com.merger;
+import com.merger.control.Command;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,9 +17,9 @@ class MergeSortingTest {
         int[] actual = {3, 5, 2, 16, 18, 10, 15, 25};
         int[] expected = {2, 3, 5, 10, 15, 16, 18, 25};
 
-        Mockito.when(mergeSorter.mergeSortDigits(actual, 0, actual.length - 1, Command.ASCENDING))
+        Mockito.when(mergeSorter.mergeSortNumbers(actual, 0, actual.length - 1, Command.ASCENDING))
                 .thenReturn(expected);
-        actual = mergeSorter.mergeSortDigits(actual, 0, actual.length - 1, Command.ASCENDING);
+        actual = mergeSorter.mergeSortNumbers(actual, 0, actual.length - 1, Command.ASCENDING);
 
         Assertions.assertArrayEquals(actual, expected);
     }

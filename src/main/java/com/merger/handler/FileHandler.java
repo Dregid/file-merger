@@ -16,7 +16,7 @@ public class FileHandler {
     private final String ILLEGAL_ARG = "Файл %s содержит недопустимые символы. Ожидаются только %s. \n";
     private final String IGNORED = "Найдена строка - %s. Недопустимый формат. \n";
 
-    public void writeToFileDigits(int[] array, String fileName) {
+    public void writeToFileNumbers(int[] array, String fileName) {
         try (FileOutputStream fos = new FileOutputStream("C://MergeSort/Result/" + fileName);
              BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos))) {
             for (int number : array) {
@@ -41,21 +41,21 @@ public class FileHandler {
         }
     }
 
-    public int[] readToArrayDigits(String[] fileNames) {
+    public int[] readToArrayNumbers(String[] fileNames) {
         int fileCount = 0;
-        int totalDigits = 0;
-        int[][] arraysDigits = new int[fileNames.length][0];
+        int totalNumbers = 0;
+        int[][] arraysNumbers = new int[fileNames.length][0];
 
         for (String fileName : fileNames) {
             try (FileInputStream fis = new FileInputStream("C://MergeSort/" + fileName);
             BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
-                arraysDigits[fileCount] = new int[getLinesCount(fileName)];
+                arraysNumbers[fileCount] = new int[getLinesCount(fileName)];
 
-                for (int idx = 0; idx < arraysDigits[fileCount].length; idx++) {
+                for (int idx = 0; idx < arraysNumbers[fileCount].length; idx++) {
                     String line = reader.readLine();
                     try {
-                        arraysDigits[fileCount][idx] = checkForMissCharAndParse(line);
-                        totalDigits++;
+                        arraysNumbers[fileCount][idx] = checkForMissCharAndParse(line);
+                        totalNumbers++;
                     } catch (IllegalArgumentException e) {
                         System.out.printf(ILLEGAL_ARG, fileName, "целые числа");
                         System.out.printf(IGNORED, line);
@@ -67,25 +67,25 @@ public class FileHandler {
             }
             fileCount++;
         }
-        return ArrayHandler.mergeArraysDigits(arraysDigits, totalDigits);
+        return ArrayHandler.mergeArraysNumbers(arraysNumbers, totalNumbers);
     }
 
     public String[] readToArrayStrings(String[] fileNames) {
         int fileCount = 0;
-        int totalWords = 0;
-        String[][] arrayWords = new String[fileNames.length][0];
+        int totalStrings = 0;
+        String[][] arrayStrings = new String[fileNames.length][0];
 
         for (String fileName : fileNames) {
             try (FileInputStream fis = new FileInputStream("C://MergeSort/" + fileName);
             BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
-                arrayWords[fileCount] = new String[getLinesCount(fileName)];
+                arrayStrings[fileCount] = new String[getLinesCount(fileName)];
 
-                for (int idx = 0; idx < arrayWords[fileCount].length; idx++) {
+                for (int idx = 0; idx < arrayStrings[fileCount].length; idx++) {
                     String line = reader.readLine();
 
                     try {
-                        arrayWords[fileCount][idx] = checkForMissSpace(line);
-                        totalWords++;
+                        arrayStrings[fileCount][idx] = checkForMissSpace(line);
+                        totalStrings++;
                     } catch (IllegalArgumentException e) {
                         System.out.printf(ILLEGAL_ARG, fileName, "символы без пробелов");
                         System.out.printf(IGNORED, line);
@@ -97,7 +97,7 @@ public class FileHandler {
             }
             fileCount++;
         }
-        return ArrayHandler.mergeArraysStrings(arrayWords, totalWords);
+        return ArrayHandler.mergeArraysStrings(arrayStrings, totalStrings);
     }
 
     private int checkForMissCharAndParse(String line) {
