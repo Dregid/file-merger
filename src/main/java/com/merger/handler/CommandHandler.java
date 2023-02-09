@@ -61,7 +61,10 @@ public class CommandHandler {
             try {
                 Files.createDirectory(directory);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                System.out.println("Невозможно создать директорию по пути" + directory +
+                        ". \n Возможно директория по пути C://MergeSort/ не существует. \n" +
+                        "Программа будет принудительно закрыта, пожалуйста, создайте необходимую директорию. \n");
+                System.exit(1);
             }
         }
 
@@ -73,10 +76,12 @@ public class CommandHandler {
             }
             Files.createFile(resultPath);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Произошла ошибка при попытке создать результирующий файл по пути " + resultPath);
+            System.exit(1);
         }
         currentIdx++;
     }
+
 
     private void separateIncomingFiles() {
         String[] fileNames = new String[incomingCommand.length - currentIdx];
