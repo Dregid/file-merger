@@ -1,5 +1,7 @@
 package com.merger.handler;
 
+import com.merger.exception.UnableToReadFileLinesException;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -7,14 +9,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileHandler {
     private final String ERROR = "Произошла ошибка при попытки чтении из %s. Возможно файла не существует. \n";
     private final String ILLEGAL_ARG = "Файл %s содержит недопустимые символы. Ожидаются только %s. \n";
     private final String IGNORED = "Найдена строка - %s. Недопустимый формат. \n";
+    private final char INVALID_SYMBOL_STRING = ' ';
+    private final char DIGIT_ZERO = 48;
+    private final char DIGIT_NINE = 57;
 
     public void writeToFileNumbers(int[] array, String fileName) {
         try (FileOutputStream fos = new FileOutputStream("C://MergeSort/Result/" + fileName);
@@ -42,92 +46,70 @@ public class FileHandler {
     }
 
     public int[] readToArrayNumbers(String[] fileNames) {
-        int fileCount = 0;
-        int totalNumbers = 0;
-        int[][] arraysNumbers = new int[fileNames.length][0];
+        List<Integer> arraysNumbers = new ArrayList<>();
 
         for (String fileName : fileNames) {
             try (FileInputStream fis = new FileInputStream("C://MergeSort/" + fileName);
             BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
-                arraysNumbers[fileCount] = new int[getLinesCount(fileName)];
 
-                for (int idx = 0; idx < arraysNumbers[fileCount].length; idx++) {
+                while (reader.ready()) {
                     String line = reader.readLine();
                     try {
-                        arraysNumbers[fileCount][idx] = checkForMissCharAndParse(line);
-                        totalNumbers++;
+                        arraysNumbers.add(checkForMissCharAndParse(line));
                     } catch (IllegalArgumentException e) {
                         System.out.printf(ILLEGAL_ARG, fileName, "целые числа");
                         System.out.printf(IGNORED, line);
-                        idx--;
                     }
                 }
+            } catch (UnableToReadFileLinesException e) {
+                System.out.println("Не удалось прочитать количество строк в файле " + fileName);
             } catch (IOException e) {
                 System.out.printf(ERROR, fileName);
             }
-            fileCount++;
         }
-        return ArrayHandler.mergeArraysNumbers(arraysNumbers, totalNumbers);
+        return arraysNumbers.stream()
+                .mapToInt(Integer::intValue)
+                .toArray();
     }
 
     public String[] readToArrayStrings(String[] fileNames) {
-        int fileCount = 0;
-        int totalStrings = 0;
-        String[][] arrayStrings = new String[fileNames.length][0];
+        List<String> arrayStrings = new ArrayList<>();
 
         for (String fileName : fileNames) {
             try (FileInputStream fis = new FileInputStream("C://MergeSort/" + fileName);
             BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
-                arrayStrings[fileCount] = new String[getLinesCount(fileName)];
 
-                for (int idx = 0; idx < arrayStrings[fileCount].length; idx++) {
+                while (reader.ready()) {
                     String line = reader.readLine();
-
                     try {
-                        arrayStrings[fileCount][idx] = checkForMissSpace(line);
-                        totalStrings++;
+                        arrayStrings.add(checkForMissSpace(line));
                     } catch (IllegalArgumentException e) {
                         System.out.printf(ILLEGAL_ARG, fileName, "символы без пробелов");
                         System.out.printf(IGNORED, line);
-                        idx--;
                     }
                 }
             } catch (IOException e) {
                 System.out.printf(ERROR, fileName);
             }
-            fileCount++;
         }
-        return ArrayHandler.mergeArraysStrings(arrayStrings, totalStrings);
+        return arrayStrings.toArray(new String[0]);
     }
 
-    private int checkForMissCharAndParse(String line) {
-        try {
-            for (char ch : line.toCharArray()) {
-                if (ch < 48 || ch > 57) {
-                    throw new IllegalArgumentException();
-                }
+    private int checkForMissCharAndParse(String line) throws IllegalArgumentException {
+        for (char ch : line.toCharArray()) {
+            if (ch < DIGIT_ZERO || ch > DIGIT_NINE) {
+                throw new IllegalArgumentException();
             }
-        } catch (NullPointerException e) {
-            return 999999999;
         }
         return Integer.parseInt(line);
     }
 
-    private String checkForMissSpace(String line) {
-        try {
-            for (char ch : line.toCharArray()) {
-                if (ch == ' ') {
-                    throw new IllegalArgumentException();
-                }
+    private String checkForMissSpace(String line) throws IllegalArgumentException {
+        for (char ch : line.toCharArray()) {
+            if (ch == INVALID_SYMBOL_STRING) {
+                throw new IllegalArgumentException();
             }
-        } catch (NullPointerException e) {
-            return "⌂";
         }
         return line;
-    }
-
-    private int getLinesCount(String fileName) throws IOException {
-        Path path = Paths.get("C://MergeSort/" + fileName);
-        return (int) Files.lines(path).count();
     }
 }

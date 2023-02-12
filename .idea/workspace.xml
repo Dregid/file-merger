@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b338ee0-50e1-4c7b-876a-f7d1c367c4f6" name="Changes" comment="Передел все, к чему можно было притронуться. Добавил обработчик массивов, дописал управляющий класс.">
+    <list default="true" id="0b338ee0-50e1-4c7b-876a-f7d1c367c4f6" name="Changes" comment="Последние доработки">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/merger/exception/UnableToReadFileLinesException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/MergerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/MergerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/handler/ArrayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/handler/ArrayHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/control/Management.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/control/Management.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/handler/ArrayHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/handler/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/handler/CommandHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merger/handler/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merger/handler/FileHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,34 +64,95 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/ProgramF/Java/corporation-master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/ProgramF/Java/file-merger",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.merger" />
       <recent name="com.merger.control" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MergerApplication">
-    <configuration name="MergerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.merger.MergerApplication" />
+  <component name="RunManager" selected="JUnit.MergeSortingTest">
+    <configuration name="FileHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="file-merger" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.merger.handler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.merger.handler" />
+      <option name="MAIN_CLASS_NAME" value="com.merger.handler.FileHandlerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ManagementTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="file-merger" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.merger.control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.merger.control" />
+      <option name="MAIN_CLASS_NAME" value="com.merger.control.ManagementTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ManagementTest.shouldStartWorkWithNumbers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="file-merger" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.merger.control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.merger.control" />
+      <option name="MAIN_CLASS_NAME" value="com.merger.control.ManagementTest" />
+      <option name="METHOD_NAME" value="shouldStartWorkWithNumbers" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ManagementTest.shouldStartWorkWithStrings" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="file-merger" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.merger.control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.merger.control" />
+      <option name="MAIN_CLASS_NAME" value="com.merger.control.ManagementTest" />
+      <option name="METHOD_NAME" value="shouldStartWorkWithStrings" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MergeSortingTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="file-merger" />
       <extension name="coverage">
         <pattern>
@@ -97,81 +160,20 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FileHandlerTest.shouldReturnArrayDigitsFromFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="file-merger" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.merger.handler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.merger.control" />
-      <option name="MAIN_CLASS_NAME" value="com.merger.control.FileHandlerTest" />
-      <option name="METHOD_NAME" value="shouldReturnArrayDigitsFromFile" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FileHandlerTest.shouldReturnArraysStrings" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="file-merger" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.merger.handler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.merger.control" />
-      <option name="MAIN_CLASS_NAME" value="com.merger.control.FileHandlerTest" />
-      <option name="METHOD_NAME" value="shouldReturnArraysStrings" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MergeSortingTest.shouldReturnSortedArrayDigits" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="file-merger" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.merger.handler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.merger.control" />
-      <option name="MAIN_CLASS_NAME" value="com.merger.control.MergeSortingTest" />
-      <option name="METHOD_NAME" value="shouldReturnSortedArrayDigits" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MergeSortingTest.shouldReturnSorterArrayStrings" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="file-merger" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.merger.handler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.merger.control" />
-      <option name="MAIN_CLASS_NAME" value="com.merger.control.MergeSortingTest" />
-      <option name="METHOD_NAME" value="shouldReturnSorterArrayStrings" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.merger" />
+      <option name="MAIN_CLASS_NAME" value="com.merger.MergeSortingTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MergerApplication" />
-        <item itemvalue="JUnit.MergeSortingTest.shouldReturnSorterArrayStrings" />
-        <item itemvalue="JUnit.MergeSortingTest.shouldReturnSortedArrayDigits" />
-        <item itemvalue="JUnit.FileHandlerTest.shouldReturnArraysStrings" />
-        <item itemvalue="JUnit.FileHandlerTest.shouldReturnArrayDigitsFromFile" />
+        <item itemvalue="JUnit.MergeSortingTest" />
+        <item itemvalue="JUnit.FileHandlerTest" />
+        <item itemvalue="JUnit.ManagementTest.shouldStartWorkWithNumbers" />
+        <item itemvalue="JUnit.ManagementTest.shouldStartWorkWithStrings" />
+        <item itemvalue="JUnit.ManagementTest" />
       </list>
     </recent_temporary>
   </component>
@@ -190,7 +192,12 @@
       <workItem from="1675737957203" duration="895000" />
       <workItem from="1675738887295" duration="14589000" />
       <workItem from="1675862731507" duration="14645000" />
-      <workItem from="1675882628717" duration="483000" />
+      <workItem from="1675882628717" duration="1575000" />
+      <workItem from="1675884232858" duration="1699000" />
+      <workItem from="1675937579494" duration="1958000" />
+      <workItem from="1675951067097" duration="704000" />
+      <workItem from="1676091724607" duration="55000" />
+      <workItem from="1676124197614" duration="7231000" />
     </task>
     <task id="LOCAL-00001" summary="Создание проекта">
       <created>1675435385668</created>
@@ -227,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675874011117</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Последние доработки">
+      <created>1675883132051</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1675883132051</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,7 +264,8 @@
     <MESSAGE value="Оптимизараван приёмник файлов. Добавлены тесты. Добавлена зависимость Mockito" />
     <MESSAGE value="Класс для хранения команд добавлены." />
     <MESSAGE value="Передел все, к чему можно было притронуться. Добавил обработчик массивов, дописал управляющий класс." />
-    <option name="LAST_COMMIT_MESSAGE" value="Передел все, к чему можно было притронуться. Добавил обработчик массивов, дописал управляющий класс." />
+    <MESSAGE value="Последние доработки" />
+    <option name="LAST_COMMIT_MESSAGE" value="Последние доработки" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
