@@ -8,12 +8,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class CommandHandler {
+    private final int COM_POSITION = 2;
     private Command sorting = Command.ASCENDING;
     private Command typeData;
     private String resultFileName;
     private String[] fileNames;
-    private int currentIdx = 0;
 
+    private int currentIdx = 0;
     private String[] incomingCommand;
 
     public CommandHandler(String[] args) {
@@ -28,7 +29,7 @@ public class CommandHandler {
     }
 
     private void checkSorting() {
-        for (int idx = 0; idx < 2; idx++) {
+        for (int idx = 0; idx < COM_POSITION; idx++) {
             if ("-d".equals(incomingCommand[idx])) {
                 sorting = Command.DESCENDING;
                 currentIdx = idx > 0 ? 0 : 1;

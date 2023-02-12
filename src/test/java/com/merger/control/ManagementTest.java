@@ -4,12 +4,13 @@ import com.merger.handler.CommandHandler;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.Spy;
+import org.mockito.Mock;
+
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 public class ManagementTest {
-    @Spy
+    @Mock
     private CommandHandler commandHandler;
     @InjectMocks
     private Management management;
